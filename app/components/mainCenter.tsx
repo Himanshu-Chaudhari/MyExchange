@@ -8,17 +8,17 @@ export default function MainCenter() {
   const session = useSession()
   const router=useRouter()
   return (
-    <div className="pt-4 items-center flex-col ">
-      <div className="text-5xl text-bold flex font-medium justify-center">
+    <div className="pt-4 items-center flex-row h-screen justify-center">
+      <div className="mt-5 text-5xl text-bold flex font-medium justify-center">
         <span>
           The Indian Crypto Exchange
         </span >
-        <span className="text-blue-500 ml-4">
+        <span className="text-blue-500 ml-4 mb-24">
           Revolution
         </span>
       </div>
       <br/>
-      <div className="flex text-center text-xl text-gray-500 justify-center">
+      <div className="flex text-center text-xl text-gray-500 justify-center mb-5">
         Create frictionless wallet from India with just a Google Account.<br/>
         Get and manage your Crypto wallet
       </div>

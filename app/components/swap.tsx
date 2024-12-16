@@ -17,6 +17,8 @@ export default function Swap({ tokenBalances, loading }: {
     const [baseAmount, setBaseAmount] = useState<number>();
     const [quoteAmount, setQuoteAmount] = useState<number>();
     const [amount , setAmount]= useState<number>();
+    const [fetchingQuote , setFetchingQuote] = useState(false);
+    const [quoteResponse , setQuoteResponse] = useState(null );
     useEffect(()=>{
         if (!baseAmount) {
             return;
@@ -31,6 +33,8 @@ export default function Swap({ tokenBalances, loading }: {
             ).then((res)=>{
                 console.log(res.data)
                 setQuoteAmount(res.data.outAmount/ (10 **quoteAsset.decimals ))
+                setFetchingQuote(false);
+                setQuoteResponse(res.data);
             });
         } catch (error) {
             console.error("Error fetching quote:", error);
@@ -82,7 +86,9 @@ export default function Swap({ tokenBalances, loading }: {
             ></SwapInputRows>
     <div className="flex justify-end p-2">
             <PrimaryButton onClick={async ()=>{
-                    
+                axios.post('/api/swap',{
+                    quoteResponse
+                })
             } }>Swap</PrimaryButton>
             </div>
         </div>
